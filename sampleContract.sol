@@ -23,7 +23,7 @@ contract ClothingTrackingV6 {
         string size;        // product size (M, L, XXL or 44, 46...)
         string material;    // made of materials as string
         string color;       // color
-        uint price;         // *1000
+        string price;         // *1000
         uint numFact;       // number of factory flows (internal use)
         string picURL;      // url to picture
         factory[] factoryFlow;  // factory flow as added to array
@@ -58,7 +58,7 @@ contract ClothingTrackingV6 {
     }
     
     // add new product (id, name, size, material (string)
-    function addProduct(uint256 _id, string _name, string _size, string _material, string _color, uint _price, string _pic) public {
+    function addProduct(uint256 _id, string _name, string _size, string _material, string _color, string _price, string _pic) public {
         
         productList[_id].productName = _name;
         productList[_id].size = _size;
@@ -82,7 +82,7 @@ contract ClothingTrackingV6 {
     }
     
     // Get info about product
-    function getProductInfo(uint256 _id) public constant returns (string name, string size, string material, string color, uint price, string url) {   
+    function getProductInfo(uint256 _id) public constant returns (string name, string size, string material, string color, string price, string url) {   
         factory[] memory facts = productList[_id].factoryFlow;
         // string memory s1 = "lsls";
         string memory s = "";
@@ -97,19 +97,19 @@ contract ClothingTrackingV6 {
         string memory s = "";
         for (uint i = 0; i < productList[_id].numFact; i++) {
            // factData.push(facts[i].country);
-           string memory s3 = facts[i].workDone;
            string memory s1 = facts[i].country;
            string memory s2 = facts[i].factoryName;
+           string memory s3 = facts[i].workDone;
            string memory s4 = facts[i].tip;
            string memory s5 = facts[i].mapsLoc;
            s = s.toSlice().concat(s1.toSlice());
-           s = s.toSlice().concat(":".toSlice());
+           s = s.toSlice().concat("#".toSlice());
            s = s.toSlice().concat(s2.toSlice());
-           s = s.toSlice().concat(":".toSlice());
+           s = s.toSlice().concat("#".toSlice());
            s = s.toSlice().concat(s3.toSlice());
-           s = s.toSlice().concat(":".toSlice());
+           s = s.toSlice().concat("#".toSlice());
            s = s.toSlice().concat(s4.toSlice());
-           s = s.toSlice().concat(":".toSlice());
+           s = s.toSlice().concat("#".toSlice());
            s = s.toSlice().concat(s5.toSlice());
            s = s.toSlice().concat(";".toSlice());
            accScore += facts[i].score;

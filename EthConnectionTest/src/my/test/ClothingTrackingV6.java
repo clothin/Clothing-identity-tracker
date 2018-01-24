@@ -111,20 +111,20 @@ public final class ClothingTrackingV6 extends Contract {
         return executeRemoteCallTransaction(function);
     }
 
-    public RemoteCall<Tuple6<String, String, String, String, BigInteger, String>> getProductInfo(BigInteger _id) {
+    public RemoteCall<Tuple6<String, String, String, String, String, String>> getProductInfo(BigInteger _id) {
         final Function function = new Function("getProductInfo", 
                 Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_id)), 
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Uint256>() {}, new TypeReference<Utf8String>() {}));
-        return new RemoteCall<Tuple6<String, String, String, String, BigInteger, String>>(
-                new Callable<Tuple6<String, String, String, String, BigInteger, String>>() {
-                    public Tuple6<String, String, String, String, BigInteger, String> call() throws Exception {
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}));
+        return new RemoteCall<Tuple6<String, String, String, String, String, String>>(
+                new Callable<Tuple6<String, String, String, String, String, String>>() {
+                    public Tuple6<String, String, String, String, String, String> call() throws Exception {
                         List<Type> results = executeCallMultipleValueReturn(function);;
-                        return new Tuple6<String, String, String, String, BigInteger, String>(
+                        return new Tuple6<String, String, String, String, String, String>(
                                 (String) results.get(0).getValue(), 
                                 (String) results.get(1).getValue(), 
                                 (String) results.get(2).getValue(), 
                                 (String) results.get(3).getValue(), 
-                                (BigInteger) results.get(4).getValue(), 
+                                (String) results.get(4).getValue(), 
                                 (String) results.get(5).getValue());
                     }
                 });
